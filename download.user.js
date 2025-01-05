@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         Bilibili international subtitle downloader
+// @name         Bilibili international subtitle downloader - Altqx's fork
 // @version      0.7.5
 // @description  Download subtitle from bilibili.tv
 // @author       AdvMaple
 // @match        /\:\/\/.*.bilibili.*\/(\w\/|)(play|video)\/.*$/
 // @include      /\:\/\/.*.bilibili.*\/(\w\/|)(play|video)\/.*$/
 // @icon         https://www.google.com/s2/favicons?domain=biliintl.com
-// @updateURL    https://github.com/AdvMaple/bilibili-subtitle-download-plugin/raw/feature/download.user.js
+// @updateURL    https://github.com/altqx/bilibili-subtitle-download-plugin/raw/feature/download.user.js
 // @grant        GM_addStyle
 
 // ==/UserScript==
@@ -14,10 +14,10 @@
 // Script start here
 (function () {
   const DEFAULT_USER_OPTIONS = {
-    sub_language: "en",
-    sub_format: "srt",
-    video_quality: 112,
-    video_codec: 12
+    sub_language: "th",
+    sub_format: "ass",
+    video_quality: 120,
+    video_codec: 7
   };
 
   const SUB_LANGUAGES = [
@@ -80,16 +80,16 @@
 
   const APP_LANGUAGES = {
     en: {
-      gen_this_link: "Generate Links for this EP",
+      gen_this_link: "Generate",
       gen_links: "Generate Links",
       subtitle: "Subtitle",
       video: "Video",
       audio: "Audio"
     },
     th: {
-      gen_this_link: "สร้างการดาวน์โหลดสำหรับ EP นี้",
-      gen_links: "สร้างการดาวน์โหลด",
-      subtitle: "คำบรรยาย",
+      gen_this_link: "สร้าง",
+      gen_links: "สร้าง",
+      subtitle: "ซับ",
       video: "วิดีโอ",
       audio: "เสียง"
     }
@@ -374,10 +374,12 @@
     } else {
       const { data } = JSON.parse(rText);
 
+      /*
       if (data.subtitles === null || data.video_subtitle === null) {
         alert("There is no suitable subtitle data");
       }
-
+      */
+      
       // Take data in response
       const subtitleData = data.subtitles || data.video_subtitle || [];
 
